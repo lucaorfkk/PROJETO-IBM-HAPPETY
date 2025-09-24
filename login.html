@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Happety</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #D6EBF0 0%, #B8D8E0 50%, #9BC4CC 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container-login {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(155, 196, 204, 0.3);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container-login::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #D6EBF0, #B8D8E0, #9BC4CC);
+        }
+
+        .logo-login {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-login i {
+            font-size: 3rem;
+            color: #B8D8E0;
+            margin-bottom: 1rem;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+
+        .logo-login h1 {
+            color: #9BC4CC;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .logo-login p {
+            color: #666666;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-login {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .campo-input {
+            position: relative;
+        }
+
+        .campo-input i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #B8D8E0;
+            font-size: 1.1rem;
+        }
+
+        .campo-input input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #D6EBF0;
+            border-radius: 12px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .campo-input input:focus {
+            border-color: #B8D8E0;
+            box-shadow: 0 0 0 3px rgba(184, 216, 224, 0.2);
+        }
+
+        .campo-input input::placeholder {
+            color: #999;
+        }
+
+        .opcoes-login {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .lembrar-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666666;
+            cursor: pointer;
+        }
+
+        .lembrar-me input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #B8D8E0;
+        }
+
+        .esqueceu-senha {
+            color: #9BC4CC;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .esqueceu-senha:hover {
+            color: #7aa3ab;
+            text-decoration: underline;
+        }
+
+        .botao-login {
+            background: linear-gradient(135deg, #B8D8E0, #9BC4CC);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .botao-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(155, 196, 204, 0.4);
+        }
+
+        .botao-login:active {
+            transform: translateY(0);
+        }
+
+        .divisor {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+            color: #666666;
+        }
+
+        .divisor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: #D6EBF0;
+        }
+
+        .divisor span {
+            background-color: white;
+            padding: 0 1rem;
+        }
+
+        .login-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .botao-social {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid #D6EBF0;
+            background-color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .botao-social:hover {
+            border-color: #B8D8E0;
+            background-color: #f8f9fa;
+        }
+
+        .botao-social i {
+            font-size: 1.2rem;
+        }
+
+        .google i { color: #db4437; }
+        .facebook i { color: #4267B2; }
+
+        .cadastrar {
+            text-align: center;
+            margin-top: 2rem;
+            color: #666666;
+        }
+
+        .cadastrar a {
+            color: #9BC4CC;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .cadastrar a:hover {
+            color: #7aa3ab;
+            text-decoration: underline;
+        }
+
+        .voltar-home {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .voltar-home:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .floating-elements i {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-elements i:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: -0.5s;
+        }
+
+        .floating-elements i:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: -2s;
+        }
+
+        .floating-elements i:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -3.5s;
+        }
+
+        .floating-elements i:nth-child(4) {
+            top: 30%;
+            right: 30%;
+            animation-delay: -1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container-login {
+                margin: 1rem;
+                padding: 2rem;
+            }
+
+            .voltar-home {
+                position: static;
+                margin-bottom: 1rem;
+                align-self: flex-start;
+            }
+
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Elementos flutuantes decorativos -->
+    <div class="floating-elements">
+        <i class="fas fa-heart"></i>
+        <i class="fas fa-paw"></i>
+        <i class="fas fa-cat"></i>
+        <i class="fas fa-dog"></i>
+    </div>
+
+    <!-- Botão voltar para home -->
+    <a href="index.html" class="voltar-home">
+        <i class="fas fa-arrow-left"></i>
+        Voltar ao Início
+    </a>
+
+    <!-- Container principal do login -->
+    <div class="container-login">
+        <div class="logo-login">
+            <i class="fas fa-heart"></i>
+            <h1>Happety</h1>
+            <p>Acesse sua conta</p>
+        </div>
+
+        <form class="form-login" id="formLogin">
+            <div class="campo-input">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="Seu e-mail" required>
+            </div>
+
+            <div class="campo-input">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Sua senha" required>
+            </div>
+
+            <div class="opcoes-login">
+                <label class="lembrar-me">
+                    <input type="checkbox">
+                    Lembrar-me
+                </label>
+                <a href="#" class="esqueceu-senha">Esqueceu a senha?</a>
+            </div>
+
+            <button type="submit" class="botao-login">
+                <i class="fas fa-sign-in-alt"></i>
+                Entrar
+            </button>
+        </form>
+
+        <div class="divisor">
+            <span>ou</span>
+        </div>
+
+        
+
+        <div class="cadastrar">
+            Não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a>
+        </div>
+    </div>
+
+    <script>
+        // Funcionalidade do formulário de login
+        const formLogin = document.getElementById('formLogin');
+        
+        formLogin.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulação de login
+            const email = this.querySelector('input[type="email"]').value;
+            const senha = this.querySelector('input[type="password"]').value;
+            
+            if (email && senha) {
+                // Adiciona efeito de loading no botão
+                const botao = this.querySelector('.botao-login');
+                const textoOriginal = botao.innerHTML;
+                
+                botao.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Entrando...';
+                botao.disabled = true;
+                
+                // Simula processo de autenticação
+                setTimeout(() => {
+                    alert(`Bem-vindo ao Happety, ${email.split('@')[0]}!`);
+                    
+                    // Restaura o botão
+                    botao.innerHTML = textoOriginal;
+                    botao.disabled = false;
+                    
+                    // Redireciona para a página principal
+                    // window.location.href = 'index.html';
+                }, 2000);
+            }
+        });
+
+        // Funcionalidade dos botões de login social
+        const botoesSocial = document.querySelectorAll('.botao-social');
+        
+        botoesSocial.forEach(botao => {
+            botao.addEventListener('click', function() {
+                const tipo = this.classList.contains('google') ? 'Google' : 'Facebook';
+                alert(`Login com ${tipo} será implementado em breve!`);
+            });
+        });
+
+        // Efeito de hover nos campos de input
+        const inputs = document.querySelectorAll('input');
+        
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

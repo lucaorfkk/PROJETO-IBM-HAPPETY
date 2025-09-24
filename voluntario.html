@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja um Voluntário - Happety</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ESTILOS GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #ffffff;
+}
+
+/* CORES PRINCIPAIS */
+:root {
+    --azul-bebe: #B8D8E0;
+    --azul-bebe-escuro: #9BC4CC;
+    --azul-bebe-claro: #D6EBF0;
+    --branco: #ffffff;
+    --cinza-claro: #f8f9fa;
+    --texto-escuro: #333333;
+    --texto-medio: #666666;
+}
+
+/* CONTAINER GERAL */
+.container-nav,
+.container-hero,
+.container-porque,
+.container-como-ajudar-vol,
+.container-depoimentos,
+.container-formulario,
+.container-rodape {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ESTILOS DA BARRA DE NAVEGAÇÃO */
+.cabecalho {
+    background-color: var(--branco);
+    box-shadow: 0 2px 10px rgba(184, 216, 224, 0.3);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.barra-navegacao {
+    padding: 1rem 0;
+}
+
+.container-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--azul-bebe-escuro);
+}
+
+.logo i {
+    margin-right: 0.5rem;
+    color: var(--azul-bebe);
+}
+
+/* MENU DE NAVEGAÇÃO */
+.menu-navegacao {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.menu-navegacao li {
+    margin: 0 1rem;
+}
+
+.menu-navegacao a {
+    text-decoration: none;
+    color: var(--texto-escuro);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.menu-navegacao a:hover,
+.menu-navegacao a.ativo {
+    background-color: var(--azul-bebe-claro);
+    color: var(--azul-bebe-escuro);
+}
+
+/* BOTÃO ESPECIAL PARA VOLUNTÁRIO */
+.botao-voluntario {
+    background-color: var(--azul-bebe) !important;
+    color: var(--branco) !important;
+    font-weight: bold;
+}
+
+.botao-voluntario:hover {
+    background-color: var(--azul-bebe-escuro) !important;
+}
+
+/* BOTÃO MENU MOBILE */
+.botao-menu-mobile {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--azul-bebe-escuro);
+    cursor: pointer;
+}
+
+/* SEÇÃO HERO VOLUNTÁRIO */
+.secao-hero-voluntario {
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, var(--azul-bebe) 0%, var(--azul-bebe-escuro) 100%);
+    color: var(--branco);
+    text-align: center;
+}
+
+.container-hero {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.icone-hero {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.conteudo-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.conteudo-hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+}
+
+.botao-hero {
+    background-color: var(--branco);
+    color: var(--azul-bebe-escuro);
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.botao-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* SEÇÃO PORQUE SER VOLUNTÁRIO */
+.secao-porque-voluntario {
+    padding: 80px 0;
+    background-color: var(--cinza-claro);
+}
+
+.container-porque {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.container-porque h2 {
+    font-size: 2.5rem;
+    color: var(--azul-bebe-escuro);
+    margin-bottom: 3rem;
+}
+
+.grid-motivos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.card-motivo {
+    background-color: var(--branco);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(184, 216, 224, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.card-motivo:hover {
+    transform: translateY(-5px);
+}
+
+.card-motivo i {
+    font-size: 3.5rem;
+    color: var(--azul-bebe);
+    margin-bottom: 1.5rem;
+}
+
+.card-motivo h3 {
+    color: var(--azul-bebe-escuro);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.card-motivo p {
+    color: var(--texto-medio);
+    line-height: 1.6;
+}
+
+/* SEÇÃO COMO AJUDAR VOLUNTÁRIO */
+.secao-como-ajudar-voluntario {
+    padding: 80px 0;
+    background-color: var(--branco);
+}
+
+.container-como-ajudar-vol {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-como-ajudar-vol h2 {
+    font-size: 2.5rem;
+    color: var(--azul-bebe-escuro);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tipos-voluntariado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.tipo-vol {
+    background-color: var(--azul-bebe-claro);
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.tipo-vol:hover {
+    transform: translateY(-3px);
+}
+
+.icone-tipo {
+    flex-shrink: 0;
+}
+
+.icone-tipo i {
+    font-size: 2.5rem;
+    color: var(--azul-bebe-escuro);
+    background-color: var(--branco);
+    padding: 1rem;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteudo-tipo h3 {
+    color: var(--azul-bebe-escuro);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.conteudo-tipo p {
+    color: var(--texto-medio);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.requisitos {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.requisitos li {
+    color: var(--texto-medio);
+    margin-bottom: 0.5rem;
+    padding-left: 1.2rem;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.requisitos li::before {
+    content: "•";
+    color: var(--azul-bebe-escuro);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.tempo {
+    background-color: var(--azul-bebe-escuro);
+    color: var(--branco);
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* SEÇÃO DEPOIMENTOS */
+.secao-depoimentos {
+    padding: 80px 0;
+    background-color: var(--azul-bebe-claro);
+}
+
+.container-depoimentos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-depoimentos h2 {
+    font-size: 2.5rem;
+    color: var(--azul-bebe-escuro);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.grid-depoimentos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card-depoimento {
+    background-color: var(--branco);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(184, 216, 224, 0.2);
+    position: relative;
+}
+
+.aspas {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+}
+
+.aspas i {
+    font-size: 2rem;
+    color: var(--azul-bebe);
+}
+
+.card-depoimento p {
+    color: var(--texto-medio);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.autor-depoimento {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--azul-bebe-escuro);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.autor-depoimento i {
+    font-size: 1.5rem;
+    color: var(--azul-bebe);
+}
+
+/* SEÇÃO FORMULÁRIO */
+.secao-formulario {
+    padding: 80px 0;
+    background-color: var(--branco);
+}
+
+.container-formulario {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-formulario h2 {
+    font-size: 2.5rem;
+    color: var(--azul-bebe-escuro);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.subtitulo-form {
+    text-align: center;
+    color: var(--texto-medio);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+/* FORMULÁRIO */
+.form-voluntario {
+    background-color: var(--azul-bebe-claro);
+    padding: 2.5rem;
+    border-radius: 15px;
+}
+
+.grupo-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.campo {
+    margin-bottom: 1.5rem;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--azul-bebe-escuro);
+    font-weight: 500;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--branco);
+    transition: border-color 0.3s ease;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--azul-bebe);
+}
+
+.campo textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.campo-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.campo-checkbox input[type="checkbox"] {
+    width: auto;
+    margin-top: 0.2rem;
+}
+
+.campo-checkbox label {
+    color: var(--texto-medio);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+.botao-enviar {
+    width: 100%;
+    background-color: var(--azul-bebe);
+    color: var(--branco);
+    padding: 1.2rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.botao-enviar:hover {
+    background-color: var(--azul-bebe-escuro);
+    transform: translateY(-2px);
+}
+
+.botao-enviar:disabled {
+    opacity: 0.7;
+    transform: none;
+    cursor: not-allowed;
+}
+
+/* RODAPÉ */
+.rodape {
+    background-color: var(--azul-bebe-escuro);
+    color: var(--branco);
+    padding: 3rem 0 1rem;
+}
+
+.info-rodape {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.coluna-rodape h3,
+.coluna-rodape h4 {
+    margin-bottom: 1rem;
+    color: var(--branco);
+}
+
+.coluna-rodape p {
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.coluna-rodape ul {
+    list-style: none;
+}
+
+.coluna-rodape ul li {
+    margin-bottom: 0.5rem;
+}
+
+.coluna-rodape ul li a {
+    color: var(--branco);
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.coluna-rodape ul li a:hover {
+    opacity: 1;
+}
+
+/* REDES SOCIAIS NO RODAPÉ */
+.redes-sociais {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.redes-sociais a {
+    width: 40px;
+    height: 40px;
+    background-color: var(--azul-bebe-claro);
+    color: var(--azul-bebe-escuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.redes-sociais a:hover {
+    background-color: var(--branco);
+    transform: translateY(-2px);
+}
+
+/* DIREITOS AUTORAIS */
+.direitos-autorais {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0.8;
+}
+
+/* RESPONSIVIDADE MOBILE */
+@media (max-width: 768px) {
+    /* MENU MOBILE */
+    .botao-menu-mobile {
+        display: block;
+    }
+    
+    .menu-navegacao {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--branco);
+        flex-direction: column;
+        padding: 1rem 0;
+        box-shadow: 0 2px 10px rgba(184, 216, 224, 0.3);
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .menu-navegacao.ativo {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .menu-navegacao li {
+        margin: 0.5rem 0;
+    }
+    
+    /* VOLUNTÁRIOS MOBILE */
+    .conteudo-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .tipos-voluntariado {
+        grid-template-columns: 1fr;
+    }
+    
+    .tipo-vol {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .grupo-campos {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid-depoimentos {
+        grid-template-columns: 1fr;
+    }
+    
+    .container-nav,
+    .container-hero,
+    .container-porque,
+    .container-como-ajudar-vol,
+    .container-depoimentos,
+    .container-formulario,
+    .container-rodape {
+        padding: 0 15px;
+    }
+}
+
+/* MOBILE EXTRA PEQUENO */
+@media (max-width: 480px) {
+    .conteudo-hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .container-porque h2,
+    .container-como-ajudar-vol h2,
+    .container-depoimentos h2,
+    .container-formulario h2 {
+        font-size: 2rem;
+    }
+    
+    .form-voluntario {
+        padding: 1.5rem;
+    }
+    
+    .card-motivo {
+        padding: 2rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- CABEÇALHO COM NAVEGAÇÃO -->
+    <header class="cabecalho">
+        <nav class="barra-navegacao">
+            <div class="container-nav">
+                <div class="logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Happety</span>
+                </div>
+                <ul class="menu-navegacao">
+                    <li><a href="index.html">Geral</a></li>
+                    <li><a href="cachorros.html">Cachorros</a></li>
+                    <li><a href="gatos.html">Gatos</a></li>
+                    <li><a href="passaros.html">Pássaros</a></li>
+                    <li><a href="peixes.html">Peixes</a></li>
+                    <li><a href="demais.html">Demais</a></li>
+                    <li><a href="lojas.html">Serviços</a></li>
+                    <li><a href="voluntario.html" class="botao-voluntario ativo">Voluntário</a></li>
+                    <li><a href="login.html" class="botao-voluntario">Usuário </a></li>
+                </ul>
+                <!-- BOTÃO MENU MOBILE -->
+                <div class="botao-menu-mobile">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SEÇÃO CABEÇALHO DA PÁGINA -->
+    <section class="secao-hero-voluntario">
+        <div class="container-hero">
+            <div class="conteudo-hero">
+                <i class="fas fa-hands-helping icone-hero"></i>
+                <h1>Faça a Diferença na Vida de um Animal</h1>
+                <p>Seja parte da nossa missão de salvar e cuidar de animais em situação de rua. Sua ajuda pode transformar vidas!</p>
+                <a href="#formulario" class="botao-hero">Quero Ser Voluntário</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO PORQUE SER VOLUNTÁRIO -->
+    <section class="secao-porque-voluntario">
+        <div class="container-porque">
+            <h2>Por que Ser Voluntário?</h2>
+            <div class="grid-motivos">
+                <div class="card-motivo">
+                    <i class="fas fa-heart"></i>
+                    <h3>Salve Vidas</h3>
+                    <p>Cada ação sua pode salvar a vida de um animal que precisa de ajuda urgente.</p>
+                </div>
+                <div class="card-motivo">
+                    <i class="fas fa-smile"></i>
+                    <h3>Satisfação Pessoal</h3>
+                    <p>A gratidão nos olhos de um animal resgatado não tem preço. É pura felicidade!</p>
+                </div>
+                <div class="card-motivo">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidade Incrível</h3>
+                    <p>Faça parte de uma família de pessoas que compartilham o mesmo amor pelos animais.</p>
+                </div>
+                <div class="card-motivo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Aprenda Muito</h3>
+                    <p>Desenvolva novas habilidades e conhecimentos sobre cuidados com animais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO COMO AJUDAR -->
+    <section class="secao-como-ajudar-voluntario">
+        <div class="container-como-ajudar-vol">
+            <h2>Como Você Pode Ajudar</h2>
+            <div class="tipos-voluntariado">
+                <div class="tipo-vol">
+                    <div class="icone-tipo">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <div class="conteudo-tipo">
+                        <h3>Resgate de Emergência</h3>
+                        <p>Participe de resgates de animais em situação de risco, abandono ou maus-tratos.</p>
+                        <ul class="requisitos">
+                            <li>Disponibilidade para emergências</li>
+                            <li>Coragem e determinação</li>
+                            <li>Trabalho em equipe</li>
+                        </ul>
+                        <span class="tempo">Tempo: Conforme demanda</span>
+                    </div>
+                </div>
+
+                <div class="tipo-vol">
+                    <div class="icone-tipo">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="conteudo-tipo">
+                        <h3>Lar Temporário</h3>
+                        <p>Acolha animais em sua casa até encontrarmos uma família definitiva para eles.</p>
+                        <ul class="requisitos">
+                            <li>Espaço adequado em casa</li>
+                            <li>Disponibilidade de tempo</li>
+                            <li>Experiência com animais</li>
+                        </ul>
+                        <span class="tempo">Tempo: 1-6 meses por animal</span>
+                    </div>
+                </div>
+
+                <div class="tipo-vol">
+                    <div class="icone-tipo">
+                        <i class="fas fa-medkit"></i>
+                    </div>
+                    <div class="conteudo-tipo">
+                        <h3>Cuidados Veterinários</h3>
+                        <p>Ajude no transporte para veterinários, aplicação de medicamentos e acompanhamento.</p>
+                        <ul class="requisitos">
+                            <li>Disponibilidade para consultas</li>
+                            <li>Transporte próprio (desejável)</li>
+                            <li>Paciência com animais doentes</li>
+                        </ul>
+                        <span class="tempo">Tempo: 4-8 horas/semana</span>
+                    </div>
+                </div>
+
+                <div class="tipo-vol">
+                    <div class="icone-tipo">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="conteudo-tipo">
+                        <h3>Fotografia e Divulgação</h3>
+                        <p>Fotografe os animais para adoção e ajude na divulgação nas redes sociais.</p>
+                        <ul class="requisitos">
+                            <li>Habilidade com fotografia</li>
+                            <li>Conhecimento de redes sociais</li>
+                            <li>Criatividade</li>
+                        </ul>
+                        <span class="tempo">Tempo: 2-4 horas/semana</span>
+                    </div>
+                </div>
+
+                <div class="tipo-vol">
+                    <div class="icone-tipo">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="conteudo-tipo">
+                        <h3>Eventos e Feiras de Adoção</h3>
+                        <p>Organize e participe de eventos para promover adoções e arrecadar fundos.</p>
+                        <ul class="requisitos">
+                            <li>Habilidades organizacionais</li>
+                            <li>Comunicação eficaz</li>
+                            <li>Disponibilidade aos finais de semana</li>
+                        </ul>
+                        <span class="tempo">Tempo: 6-10 horas/mês</span>
+                    </div>
+                </div>
+
+                <div class="tipo-vol">
+                    <div class="icone-tipo">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <div class="conteudo-tipo">
+                        <h3>Limpeza e Manutenção</h3>
+                        <p>Ajude na limpeza dos espaços onde mantemos os animais e manutenção geral.</p>
+                        <ul class="requisitos">
+                            <li>Disposição para trabalho braçal</li>
+                            <li>Regularidade no voluntariado</li>
+                            <li>Trabalho em equipe</li>
+                        </ul>
+                        <span class="tempo">Tempo: 3-5 horas/semana</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- SEÇÃO FORMULÁRIO -->
+    <section id="formulario" class="secao-formulario">
+        <div class="container-formulario">
+            <h2>Inscreva-se Como Voluntário</h2>
+            <p class="subtitulo-form">Preencha o formulário abaixo e entraremos em contato para alinhar como você pode ajudar!</p>
+            
+            <form class="form-voluntario">
+                <div class="grupo-campos">
+                    <div class="campo">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="campo">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="grupo-campos">
+                    <div class="campo">
+                        <label for="telefone">Telefone/WhatsApp *</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    <div class="campo">
+                        <label for="idade">Idade</label>
+                        <input type="number" id="idade" name="idade" min="16" max="100">
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="endereco">Endereço (Bairro/Cidade)</label>
+                    <input type="text" id="endereco" name="endereco">
+                </div>
+
+                <div class="campo">
+                    <label for="interesse">Como gostaria de ajudar? *</label>
+                    <select id="interesse" name="interesse" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="resgate">Resgate de Emergência</option>
+                        <option value="lar-temporario">Lar Temporário</option>
+                        <option value="veterinario">Cuidados Veterinários</option>
+                        <option value="fotografia">Fotografia e Divulgação</option>
+                        <option value="eventos">Eventos e Feiras</option>
+                        <option value="limpeza">Limpeza e Manutenção</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="disponibilidade">Disponibilidade de Tempo</label>
+                    <select id="disponibilidade" name="disponibilidade">
+                        <option value="">Selecione</option>
+                        <option value="2-4h">2-4 horas por semana</option>
+                        <option value="4-8h">4-8 horas por semana</option>
+                        <option value="fins-semana">Apenas fins de semana</option>
+                        <option value="emergencias">Disponível para emergências</option>
+                        <option value="flexivel">Horário flexível</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="experiencia">Experiência com Animais</label>
+                    <textarea id="experiencia" name="experiencia" rows="3" placeholder="Conte-nos sobre sua experiência com animais..."></textarea>
+                </div>
+
+                <div class="campo">
+                    <label for="motivacao">Por que quer ser voluntário?</label>
+                    <textarea id="motivacao" name="motivacao" rows="3" placeholder="Compartilhe sua motivação..."></textarea>
+                </div>
+
+                <div class="campo-checkbox">
+                    <input type="checkbox" id="termos" name="termos" required>
+                    <label for="termos">Concordo em ser contatado pela equipe do Happety e declaro que as informações fornecidas são verdadeiras. *</label>
+                </div>
+
+                <button type="submit" class="botao-enviar">
+                    <i class="fas fa-paper-plane"></i>
+                    Enviar Inscrição
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <div class="container-rodape">
+            <div class="info-rodape">
+                <div class="coluna-rodape">
+                    <h3>Happety</h3>
+                    <p>Dedicados ao resgate e proteção de animais em situação de rua.</p>
+                    <div class="redes-sociais">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="coluna-rodape">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone"></i> (19) 99835-5378</p>
+                    <p><i class="fas fa-envelope"></i> contato@happety.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Americana, SP</p>
+                </div>
+                <div class="coluna-rodape">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="voluntario.html">Seja Voluntário</a></li>
+                        <li><a href="lojas.html">Lojas Parceiras</a></li>
+                        <li><a href="#">Como Adotar</a></li>
+                        <li><a href="#">Emergência 24h</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="direitos-autorais">
+                <p>&copy; 2025 Happety. IBM - Etec Polivalente Americana - Extensão FATEC</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT PARA FUNCIONALIDADES -->
+    <script>
+        // Menu mobile
+        const botaoMenuMobile = document.querySelector('.botao-menu-mobile');
+        const menuNavegacao = document.querySelector('.menu-navegacao');
+
+        botaoMenuMobile.addEventListener('click', () => {
+            menuNavegacao.classList.toggle('ativo');
+        });
+
+        // Scroll suave para o formulário
+        document.querySelector('.botao-hero').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('#formulario').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Funcionalidade do formulário
+        document.querySelector('.form-voluntario').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simular envio do formulário
+            const botaoEnviar = document.querySelector('.botao-enviar');
+            const textoOriginal = botaoEnviar.innerHTML;
+            
+            botaoEnviar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            botaoEnviar.disabled = true;
+            
+            setTimeout(() => {
+                alert('Obrigado por se inscrever! Em breve entraremos em contato via WhatsApp para agendar uma conversa e conhecer melhor seu perfil voluntário.');
+                
+                // Reset do formulário
+                e.target.reset();
+                botaoEnviar.innerHTML = textoOriginal;
+                botaoEnviar.disabled = false;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lojas Parceiras - Happety</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ESTILOS GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        /* CORES PRINCIPAIS */
+        :root {
+            --azul-bebe: #B8D8E0;
+            --azul-bebe-escuro: #9BC4CC;
+            --azul-bebe-claro: #D6EBF0;
+            --branco: #ffffff;
+            --cinza-claro: #f8f9fa;
+            --texto-escuro: #333333;
+            --texto-medio: #666666;
+        }
+
+        /* CONTAINER GERAL */
+        .container-nav,
+        .container-cabecalho,
+        .container-filtros,
+        .container-lojas,
+        .container-como-usar,
+        .container-rodape {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ESTILOS DA BARRA DE NAVEGAÇÃO */
+        .cabecalho {
+            background-color: var(--branco);
+            box-shadow: 0 2px 10px rgba(184, 216, 224, 0.3);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .barra-navegacao {
+            padding: 1rem 0;
+        }
+
+        .container-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* LOGO */
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--azul-bebe-escuro);
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--azul-bebe);
+        }
+
+        /* MENU DE NAVEGAÇÃO */
+        .menu-navegacao {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .menu-navegacao li {
+            margin: 0 1rem;
+        }
+
+        .menu-navegacao a {
+            text-decoration: none;
+            color: var(--texto-escuro);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-navegacao a:hover,
+        .menu-navegacao a.ativo {
+            background-color: var(--azul-bebe-claro);
+            color: var(--azul-bebe-escuro);
+        }
+
+        /* BOTÃO ESPECIAL PARA VOLUNTÁRIO */
+        .botao-voluntario {
+            background-color: var(--azul-bebe) !important;
+            color: var(--branco) !important;
+            font-weight: bold;
+        }
+
+        .botao-voluntario:hover {
+            background-color: var(--azul-bebe-escuro) !important;
+        }
+
+        /* BOTÃO MENU MOBILE */
+        .botao-menu-mobile {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--azul-bebe-escuro);
+            cursor: pointer;
+        }
+
+        /* CABEÇALHO DA PÁGINA */
+        .secao-cabecalho-pagina {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, var(--azul-bebe-claro) 0%, var(--branco) 100%);
+            text-align: center;
+        }
+
+        .container-cabecalho {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .icone-pagina {
+            font-size: 4rem;
+            color: var(--azul-bebe);
+            margin-bottom: 1rem;
+        }
+
+        .conteudo-cabecalho h1 {
+            font-size: 2.5rem;
+            color: var(--azul-bebe-escuro);
+            margin-bottom: 1rem;
+        }
+
+        .conteudo-cabecalho p {
+            font-size: 1.2rem;
+            color: var(--texto-medio);
+        }
+
+        /* SEÇÃO DE FILTROS */
+        .secao-filtros {
+            padding: 40px 0;
+            background-color: var(--branco);
+            border-bottom: 1px solid var(--azul-bebe-claro);
+        }
+
+        .container-filtros {
+            text-align: center;
+        }
+
+        .container-filtros h3 {
+            color: var(--azul-bebe-escuro);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .filtros-animais {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .filtros-animais button {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--azul-bebe);
+            background-color: transparent;
+            color: var(--azul-bebe-escuro);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filtros-animais button:hover,
+        .filtros-animais button.filtro-ativo {
+            background-color: var(--azul-bebe);
+            color: var(--branco);
+        }
+
+        /* SEÇÃO PRINCIPAL DAS LOJAS */
+        .secao-lojas {
+            padding: 60px 0;
+            background-color: var(--cinza-claro);
+        }
+
+        .grid-lojas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        /* CARD DA LOJA */
+        .card-loja {
+            background-color: var(--branco);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(184, 216, 224, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .card-loja:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(184, 216, 224, 0.3);
+        }
+
+        /* LOGO DA LOJA */
+        .logo-loja {
+            height: 120px;
+            background: linear-gradient(135deg, var(--azul-bebe-claro), var(--azul-bebe));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-loja i {
+            font-size: 3rem;
+            color: var(--branco);
+        }
+
+        /* INFORMAÇÕES DA LOJA */
+        .info-loja {
+            padding: 1.5rem;
+        }
+
+        .info-loja h3 {
+            color: var(--azul-bebe-escuro);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .detalhes-loja {
+            margin-bottom: 1rem;
+        }
+
+        .detalhes-loja p {
+            color: var(--texto-medio);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .detalhes-loja i {
+            color: var(--azul-bebe);
+            width: 15px;
+        }
+
+        /* DESCONTO DA LOJA */
+        .desconto-loja {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 0.7rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #c3e6cb;
+        }
+
+        .desconto-loja i {
+            margin-right: 0.5rem;
+        }
+
+        /* DESCRIÇÃO DA LOJA */
+        .descricao-loja {
+            color: var(--texto-medio);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* BENEFÍCIOS DA LOJA */
+        .beneficios-loja {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .beneficio {
+            background-color: var(--azul-bebe-claro);
+            color: var(--azul-bebe-escuro);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* SEÇÃO COMO USAR OS DESCONTOS */
+        .secao-como-usar {
+            padding: 80px 0;
+            background-color: var(--azul-bebe-claro);
+        }
+
+        .container-como-usar {
+            text-align: center;
+        }
+
+        .container-como-usar h2 {
+            font-size: 2.5rem;
+            color: var(--azul-bebe-escuro);
+            margin-bottom: 3rem;
+        }
+
+        .passos-desconto {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .passo-desconto {
+            background-color: var(--branco);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(184, 216, 224, 0.2);
+        }
+
+        .passo-desconto i {
+            font-size: 3rem;
+            color: var(--azul-bebe);
+            margin-bottom: 1rem;
+        }
+
+        .passo-desconto h3 {
+            color: var(--azul-bebe-escuro);
+            margin-bottom: 1rem;
+        }
+
+        .passo-desconto p {
+            color: var(--texto-medio);
+        }
+
+        /* RODAPÉ */
+        .rodape {
+            background-color: var(--azul-bebe-escuro);
+            color: var(--branco);
+            padding: 3rem 0 1rem;
+        }
+
+        .info-rodape {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .coluna-rodape h3,
+        .coluna-rodape h4 {
+            margin-bottom: 1rem;
+            color: var(--branco);
+        }
+
+        .coluna-rodape p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .coluna-rodape ul {
+            list-style: none;
+        }
+
+        .coluna-rodape ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .coluna-rodape ul li a {
+            color: var(--branco);
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .coluna-rodape ul li a:hover {
+            opacity: 1;
+        }
+
+        /* REDES SOCIAIS NO RODAPÉ */
+        .redes-sociais {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .redes-sociais a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--azul-bebe-claro);
+            color: var(--azul-bebe-escuro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .redes-sociais a:hover {
+            background-color: var(--branco);
+            transform: translateY(-2px);
+        }
+
+        /* DIREITOS AUTORAIS */
+        .direitos-autorais {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+        }
+
+        /* RESPONSIVIDADE MOBILE */
+        @media (max-width: 768px) {
+            /* MENU MOBILE */
+            .botao-menu-mobile {
+                display: block;
+            }
+            
+            .menu-navegacao {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--branco);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 2px 10px rgba(184, 216, 224, 0.3);
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .menu-navegacao.ativo {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .menu-navegacao li {
+                margin: 0.5rem 0;
+            }
+            
+            .filtros-animais {
+                gap: 0.5rem;
+            }
+            
+            .filtros-animais button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .grid-lojas {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .passos-desconto {
+                grid-template-columns: 1fr;
+            }
+            
+            .container-nav,
+            .container-cabecalho,
+            .container-filtros,
+            .container-lojas,
+            .container-como-usar,
+            .container-rodape {
+                padding: 0 15px;
+            }
+        }
+
+        /* MOBILE EXTRA PEQUENO */
+        @media (max-width: 480px) {
+            .conteudo-cabecalho h1 {
+                font-size: 2rem;
+            }
+            
+            .container-como-usar h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CABEÇALHO COM NAVEGAÇÃO -->
+    <header class="cabecalho">
+        <nav class="barra-navegacao">
+            <div class="container-nav">
+                <div class="logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Happety</span>
+                </div>
+                <ul class="menu-navegacao">
+                    <li><a href="index.html">Geral</a></li>
+                    <li><a href="cachorros.html">Cachorros</a></li>
+                    <li><a href="gatos.html">Gatos</a></li>
+                    <li><a href="passaros.html">Pássaros</a></li>
+                    <li><a href="peixes.html">Peixes</a></li>
+                    <li><a href="demais.html">Demais</a></li>
+                    <li><a href="lojas.html" class="ativo">Serviços</a></li>
+                    <li><a href="voluntario.html" class="botao-voluntario">Voluntário</a></li>
+                    <li><a href="login.html" class="botao-voluntario">Usuário </a></li>
+                </ul>
+                <!-- BOTÃO MENU MOBILE -->
+                <div class="botao-menu-mobile">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SEÇÃO CABEÇALHO DA PÁGINA -->
+    <section class="secao-cabecalho-pagina">
+        <div class="container-cabecalho">
+            <div class="conteudo-cabecalho">
+                <i class="fas fa-store icone-pagina"></i>
+                <h1>Serviços Disponíveis</h1>
+                <p>Serviços oferecidos pelo seu petshop favorito Happety.</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- SEÇÃO PRINCIPAL DAS LOJAS -->
+    <section class="secao-lojas">
+        <div class="container-lojas">
+            <div class="grid-lojas">
+                <!-- CARD LOJA 1 -->
+                <div class="card-loja" data-categoria="acessorios">
+                    <div class="logo-loja">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="info-loja">
+                        <h3>Banho e Tosa</h3>
+                        <div class="detalhes-loja">
+                            
+                        </div>
+                        <div class="desconto-loja">
+                            <i class="fas fa-percentage"></i>
+                            <span>10% de desconto para voluntários.</span>
+                        </div>
+                        <p class="descricao-loja">Buscamos seu pet na sua casa e entregamos no horário que você preferir!</p>
+                        <div class="beneficios-loja">
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD LOJA 2 -->
+                <div class="card-loja" data-categoria="farmacia">
+                    <div class="logo-loja">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div class="info-loja">
+                        <h3>Castração e Vacinação</h3>
+                        <div class="detalhes-loja">
+                            
+                        </div>
+                        <div class="desconto-loja">
+                            <i class="fas fa-percentage"></i>
+                            <span>15% de desconto para voluntários.</span>
+                        </div>
+                        <p class="descricao-loja">Buscamos seu pet na sua casa e entregamos no horário que você preferir!</p>
+                        <div class="beneficios-loja">
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO COMO USAR OS DESCONTOS -->
+    <section class="secao-como-usar">
+        <div class="container-como-usar">
+            <h2>Como Usar os Descontos</h2>
+            <div class="passos-desconto">
+                <div class="passo-desconto">
+                    <i class="fas fa-heart"></i>
+                    <h3>1. Faça uma boa ação</h3>
+                    <p>Complete algum dos processos que visam beneficiar os animais de rua do nosso plano de voluntários </p>
+                </div>
+                <div class="passo-desconto">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>2. Receba o Cartão</h3>
+                    <p>Ganhe nosso cartão de parceiro com seu nome e dados.</p>
+                </div>
+                <div class="passo-desconto">
+                    <i class="fas fa-store"></i>
+                    <h3>3. Apresente na Loja</h3>
+                    <p>Mostre o cartão nas lojas parceiras e ganhe seu desconto</p>
+                </div>
+                <div class="passo-desconto">
+                    <i class="fas fa-percentage"></i>
+                    <h3>4. Economize Sempre</h3>
+                    <p>Continue fazendo o bem e use quantas vezes quiser durante todo esse período!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <div class="container-rodape">
+            <div class="info-rodape">
+                <div class="coluna-rodape">
+                    <h3>Happety</h3>
+                    <p>Dedicados ao resgate e proteção de animais em situação de rua.</p>
+                    <div class="redes-sociais">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="coluna-rodape">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone"></i> (19) 99835-5378</p>
+                    <p><i class="fas fa-envelope"></i> contato@happety.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Americana, SP</p>
+                </div>
+                <div class="coluna-rodape">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="voluntario.html">Seja Voluntário</a></li>
+                        <li><a href="lojas.html">Lojas Parceiras</a></li>
+                        <li><a href="#">Como Adotar</a></li>
+                        <li><a href="#">Emergência 24h</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="direitos-autorais">
+                <p>&copy; 2025 Happety. IBM - Etec Polivalente Americana - Extensão FATEC</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT PARA FUNCIONALIDADES -->
+    <script>
+        // Menu mobile
+        const botaoMenuMobile = document.querySelector('.botao-menu-mobile');
+        const menuNavegacao = document.querySelector('.menu-navegacao');
+
+        botaoMenuMobile.addEventListener('click', () => {
+            menuNavegacao.classList.toggle('ativo');
+        });
+
+        // Filtro das lojas
+        const filtros = document.querySelectorAll('.filtros-animais button');
+        const lojas = document.querySelectorAll('.card-loja');
+
+        filtros.forEach(filtro => {
+            filtro.addEventListener('click', () => {
+                // Remove classe ativo de todos os filtros
+                filtros.forEach(f => f.classList.remove('filtro-ativo'));
+                // Adiciona classe ativo ao filtro clicado
+                filtro.classList.add('filtro-ativo');
+
+                const categoria = filtro.dataset.filtro;
+
+                lojas.forEach(loja => {
+                    if (categoria === 'todos' || loja.dataset.categoria === categoria) {
+                        loja.style.display = 'block';
+                    } else {
+                        loja.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

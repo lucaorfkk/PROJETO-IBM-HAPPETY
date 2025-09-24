@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pássaros para Adoção - Happety</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+     <style>
+        /* ESTILOS EMERGENCIAL PARA A LOJA VIRTUAL */
+        .secao-loja-virtual {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .container-loja {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .container-loja h2 {
+            font-size: 2.2rem;
+            color: #9BC4CC;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitulo-loja {
+            text-align: center;
+            color: #666666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .barra-pesquisa {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(155, 196, 204, 0.3);
+        }
+        
+        .barra-pesquisa input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .barra-pesquisa button {
+            padding: 1rem 1.5rem;
+            background-color: #B8D8E0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .barra-pesquisa button:hover {
+            background-color: #9BC4CC;
+        }
+        
+        .conteudo-loja {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+        
+        .filtros-loja {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(155, 196, 204, 0.2);
+            align-self: start;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .filtros-loja h3 {
+            color: #9BC4CC;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #D6EBF0;
+        }
+        
+        .grupo-filtro {
+            margin-bottom: 1.5rem;
+        }
+        
+        .grupo-filtro h4 {
+            color: #9BC4CC;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .opcoes-filtro {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .opcoes-filtro label {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #666666;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        
+        .opcoes-filtro input[type="checkbox"],
+        .opcoes-filtro input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #B8D8E0;
+        }
+        
+        .botao-aplicar, .botao-limpar {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 0.8rem;
+        }
+        
+        .botao-aplicar {
+            background-color: #B8D8E0;
+            color: white;
+        }
+        
+        .botao-aplicar:hover {
+            background-color: #9BC4CC;
+        }
+        
+        .botao-limpar {
+            background-color: transparent;
+            color: #9BC4CC;
+            border: 2px solid #B8D8E0;
+        }
+        
+        .produtos-loja {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .controles-produtos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(155, 196, 204, 0.2);
+        }
+        
+        .quantidade-produtos {
+            color: #666666;
+            font-size: 0.95rem;
+        }
+        
+        .ordenacao {
+            padding: 0.6rem 1rem;
+            border: 2px solid #B8D8E0;
+            border-radius: 8px;
+            background-color: white;
+            color: #666666;
+        }
+        
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card-produto {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(155, 196, 204, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .card-produto:hover {
+            transform: translateY(-5px);
+        }
+        
+        .imagem-produto {
+            height: 180px;
+            background: linear-gradient(135deg, #D6EBF0, #B8D8E0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .imagem-produto i {
+            font-size: 3.5rem;
+            color: white;
+        }
+        
+        .desconto {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .info-produto {
+            padding: 1.5rem;
+        }
+        
+        .info-produto h3 {
+            color: #9BC4CC;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .avaliacao {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .avaliacao i {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+        
+        .avaliacao span {
+            color: #666666;
+            font-size: 0.85rem;
+        }
+        
+        .preco {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .preco-atual {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #9BC4CC;
+        }
+        
+        .preco-antigo {
+            font-size: 0.9rem;
+            color: #666666;
+            text-decoration: line-through;
+        }
+        
+        .botao-comprar {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #B8D8E0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .botao-comprar:hover {
+            background-color: #9BC4CC;
+        }
+        
+        .paginacao {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .paginacao button {
+            padding: 0.6rem 1rem;
+            border: 2px solid #B8D8E0;
+            background-color: white;
+            color: #9BC4CC;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .pagina-atual {
+            background-color: #B8D8E0;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .conteudo-loja {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-produtos {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        /* ESTILOS PARA SEÇÃO CUIDADOS ESPECIAIS */
+.secao-cuidados-especiais {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.container-cuidados {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-cuidados h2 {
+    font-size: 2.2rem;
+    color: #9BC4CC;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.grid-cuidados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card-cuidado {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(155, 196, 204, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-cuidado:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(155, 196, 204, 0.3);
+}
+
+.card-cuidado i {
+    font-size: 3rem;
+    color: #B8D8E0;
+    margin-bottom: 1.5rem;
+}
+
+.card-cuidado h3 {
+    color: #9BC4CC;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.card-cuidado p {
+    color: #666666;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* ESTILOS PARA SEÇÃO ALERTA SILVESTRE */
+.secao-alerta-silvestre {
+    padding: 40px 0;
+    background-color: #fff8dc;
+    border-left: 5px solid #ff6b6b;
+}
+
+.container-alerta {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.conteudo-alerta {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.conteudo-alerta i {
+    font-size: 2.5rem;
+    color: #ff6b6b;
+    margin-top: 0.5rem;
+}
+
+.conteudo-alerta h3 {
+    color: #9BC4CC;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.conteudo-alerta p {
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .conteudo-alerta {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- CABEÇALHO COM NAVEGAÇÃO -->
+    <header class="cabecalho">
+        <nav class="barra-navegacao">
+            <div class="container-nav">
+                <div class="logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Happety</span>
+                </div>
+                <ul class="menu-navegacao">
+                    <li><a href="index.html">Geral</a></li>
+                    <li><a href="cachorros.html">Cachorros</a></li>
+                    <li><a href="gatos.html">Gatos</a></li>
+                    <li><a href="passaros.html" class="ativo">Pássaros</a></li>
+                    <li><a href="peixes.html">Peixes</a></li>
+                    <li><a href="demais.html">Demais</a></li>
+                    <li><a href="lojas.html">Serviços</a></li>
+                    <li><a href="voluntario.html" class="botao-voluntario">Voluntário</a></li>
+                    <li><a href="login.html" class="botao-voluntario">Usuário </a></li>
+                </ul>
+                <!-- BOTÃO MENU MOBILE -->
+                <div class="botao-menu-mobile">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SEÇÃO CABEÇALHO DA PÁGINA -->
+    <section class="secao-cabecalho-pagina">
+        <div class="container-cabecalho">
+            <div class="conteudo-cabecalho">
+                <i class="fas fa-dove icone-pagina"></i>
+                <h1>Pássaros para Adoção</h1>
+                <p>Aves resgatadas que precisam de cuidados especiais e muito amor. Cada uma tem sua beleza única e personalidade cativante.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: LOJA VIRTUAL PARA PÁSSAROS -->
+<section class="secao-loja-virtual">
+    <div class="container-loja">
+        <h2>Produtos para Pássaros</h2>
+        <p class="subtitulo-loja">Encontre tudo que sua ave precisa com preços especiais!</p>
+        
+        <div class="barra-pesquisa">
+            <input type="text" placeholder="O que seu pássaro precisa hoje?">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="conteudo-loja">
+            <aside class="filtros-loja">
+                <h3>Filtros</h3>
+                
+                <div class="grupo-filtro">
+                    <h4>Categorias</h4>
+                    <div class="opcoes-filtro">
+                        <label><input type="checkbox" name="categoria" value="racao"> Ração e Alimentação</label>
+                        <label><input type="checkbox" name="categoria" value="gaiolas"> Gaiolas e Viveiros</label>
+                        <label><input type="checkbox" name="categoria" value="bebedouros"> Bebedouros e Comedouros</label>
+                        <label><input type="checkbox" name="categoria" value="brinquedos"> Brinquedos</label>
+                        <label><input type="checkbox" name="categoria" value="acessorios"> Acessórios</label>
+                        <label><input type="checkbox" name="categoria" value="saude"> Saúde e Medicamentos</label>
+                    </div>
+                </div>
+                
+                <div class="grupo-filtro">
+                    <h4>Faixa de Preço</h4>
+                    <div class="opcoes-filtro">
+                        <label><input type="radio" name="preco" value="0-50"> Até R$ 50</label>
+                        <label><input type="radio" name="preco" value="50-100"> R$ 50 - R$ 100</label>
+                        <label><input type="radio" name="preco" value="100-200"> R$ 100 - R$ 200</label>
+                        <label><input type="radio" name="preco" value="200+"> Acima de R$ 200</label>
+                    </div>
+                </div>
+                
+                <div class="grupo-filtro">
+                    <h4>Tipo de Ave</h4>
+                    <div class="opcoes-filtro">
+                        <label><input type="checkbox" name="tipo" value="pequenas"> Aves Pequenas</label>
+                        <label><input type="checkbox" name="tipo" value="medias"> Aves Médias</label>
+                        <label><input type="checkbox" name="tipo" value="grandes"> Aves Grandes</label>
+                        <label><input type="checkbox" name="tipo" value="exoticas"> Aves Exóticas</label>
+                    </div>
+                </div>
+                
+                <div class="grupo-filtro">
+                    <h4>Marcas</h4>
+                    <div class="opcoes-filtro">
+                        <label><input type="checkbox" name="marca" value="megazoo"> MegaZoo</label>
+                        <label><input type="checkbox" name="marca" value="zoo"> Zoo</label>
+                        <label><input type="checkbox" name="marca" value="papa"> Papa Pássaros</label>
+                        <label><input type="checkbox" name="marca" value="gold"> Gold</label>
+                    </div>
+                </div>
+                
+                <button class="botao-aplicar">Aplicar Filtros</button>
+                <button class="botao-limpar">Limpar Filtros</button>
+            </aside>
+            
+            <div class="produtos-loja">
+                <div class="controles-produtos">
+                    <span class="quantidade-produtos">10 produtos encontrados</span>
+                    <select class="ordenacao">
+                        <option value="relevancia">Ordenar por: Relevância</option>
+                        <option value="menor-preco">Menor Preço</option>
+                        <option value="maior-preco">Maior Preço</option>
+                        <option value="avaliacao">Melhores Avaliações</option>
+                    </select>
+                </div>
+                
+                <div class="grid-produtos">
+                    <!-- Produto 1 -->
+                    <div class="card-produto">
+                        <div class="imagem-produto">
+                            <img src="raçao passaro.jpeg">
+                            <span class="desconto">-12%</span>
+                        </div>
+                        <div class="info-produto">
+                            <h3>Alcon Club Ração para Calopsitas</h3>
+                            <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(98)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 45,90</span>
+                                <span class="preco-antigo">R$ 52,00</span>
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Produto 2 -->
+                    <div class="card-produto">
+                        <div class="imagem-produto">
+                            <img src="gaiola.jpeg">
+                        </div>
+                        <div class="info-produto">
+                            <h3>Gaiola para Canários com Acessórios</h3>
+                            <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(67)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 189,90</span>
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <!-- Produto 3 -->
+                    <div class="card-produto">
+                        <div class="imagem-produto">
+                            <img src="bebeeeerrrr.webp">
+                        </div>
+                        <div class="info-produto">
+                            <h3>Bebedouro</h3>
+                            <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(67)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 20,90</span>
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <!-- Produto 4 -->
+                    <div class="card-produto">
+                        <div class="imagem-produto">
+                            <img src="aloo.webp">
+                        </div>
+                        <div class="info-produto">
+                            <h3> Alpiste Premium </h3>
+                            <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(67)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 30,90</span>
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+                    <!-- Produto 5 -->
+                    <div class="card-produto">
+                        <div class="imagem-produto">
+                            <img src="pushh.jfif">
+                        </div>
+                        <div class="info-produto">
+                            <h3> Puleiro </h3>
+                            <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(67)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 20,90</span>
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+
+
+                <!-- Produto 6 -->
+                    <div class="card-produto">
+                        <div class="imagem-produto">
+                            <img src="looooo.jfif">
+                        </div>
+                        <div class="info-produto">
+                            <h3> Ponte decorativa </h3>
+                            <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(67)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 15,90</span>
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Mais produtos para pássaros... -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <!-- SEÇÃO DE FILTROS -->
+    <section class="secao-filtros">
+        <div class="container-filtros">
+            <h3>Encontre sua Ave Ideal</h3>
+            <div class="filtros-animais">
+                <button class="filtro-ativo" data-filtro="todos">Todas</button>
+                <button data-filtro="canarios">Canários</button>
+                <button data-filtro="periquitos">Periquitos</button>
+                <button data-filtro="calopsitas">Calopsitas</button>
+                <button data-filtro="outros">Outros</button>
+                <button data-filtro="silvestres">Silvestres</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO PRINCIPAL DOS PÁSSAROS -->
+    <section class="secao-animais">
+        <div class="container-animais">
+            <div class="grid-animais">
+                
+
+                <!-- CARD PÁSSARO 2 -->
+                <div class="card-animal" data-categoria="periquitos">
+                    <div class="foto-animal">
+                        <img src="Casal.jpeg">
+                    </div>
+                    <div class="info-animal">
+                        <h3>Casal Azul</h3>
+                        <div class="detalhes-animal">
+                            <span><i class="fas fa-feather"></i> Periquitos</span>
+                            <span><i class="fas fa-palette"></i> Azul</span>
+                            <span><i class="fas fa-heart"></i> Casal</span>
+                        </div>
+                        <p>Casal de periquitos inseparáveis. São muito sociáveis e brincalhões. Precisam ser adotados juntos pois são muito ligados.</p>
+                        <div class="saude-animal">
+                            <i class="fas fa-check-circle"></i> Saudáveis
+                            <i class="fas fa-check-circle"></i> Sociáveis
+                            <i class="fas fa-heart"></i> Adoção em par
+                        </div>
+                        <button class="botao-adotar">Quero Adotar</button>
+                    </div>
+                </div>
+
+                <!-- CARD PÁSSARO 3 -->
+                <div class="card-animal" data-categoria="calopsitas">
+                    <div class="foto-animal">
+                        <img src="cinza.jpeg">
+                    </div>
+                    <div class="info-animal">
+                        <h3>Pedrinho</h3>
+                        <div class="detalhes-animal">
+                            <span><i class="fas fa-feather"></i> Calopsita</span>
+                            <span><i class="fas fa-palette"></i> Cinza</span>
+                            <span><i class="fas fa-mars"></i> Macho</span>
+                        </div>
+                        <p>Calopsita muito inteligente que já aprendeu algumas palavras. Adora interagir com pessoas e é muito carinhoso com quem conhece.</p>
+                        <div class="saude-animal">
+                            <i class="fas fa-check-circle"></i> Saudável
+                            <i class="fas fa-check-circle"></i> Socializado
+                            <i class="fas fa-check-circle"></i> Fala algumas palavras
+                        </div>
+                        <button class="botao-adotar">Quero Adotar</button>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO CUIDADOS COM PÁSSAROS -->
+    <section class="secao-cuidados-especiais">
+        <div class="container-cuidados">
+            <h2>Cuidados Especiais com Aves</h2>
+            <div class="grid-cuidados">
+                <div class="card-cuidado">
+                    <i class="fas fa-home"></i>
+                    <h3>Gaiola Adequada</h3>
+                    <p>A gaiola deve ser ampla para que a ave possa abrir as asas completamente e ter espaço para voo.</p>
+                </div>
+                <div class="card-cuidado">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Alimentação Balanceada</h3>
+                    <p>Mistura de sementes, frutas e verduras frescas. Evite chocolate, abacate e alimentos salgados.</p>
+                </div>
+                <div class="card-cuidado">
+                    <i class="fas fa-sun"></i>
+                    <h3>Luz Solar</h3>
+                    <p>Aves precisam de luz solar direta ou lâmpada UV especial para síntese de vitamina D.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ALERTA SOBRE AVES SILVESTRES -->
+    <section class="secao-alerta-silvestre">
+        <div class="container-alerta">
+            <div class="conteudo-alerta">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Importante sobre Aves Silvestres</h3>
+                <p>A criação de aves silvestres sem autorização é crime. Todas as nossas aves silvestres possuem documentação do IBAMA ou são casos especiais que não podem retornar à natureza.</p>
+                <p>Se você encontrar uma ave silvestre machucada, entre em contato conosco imediatamente para orientação sobre o resgate adequado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <div class="container-rodape">
+            <div class="info-rodape">
+                <div class="coluna-rodape">
+                    <h3>Happety</h3>
+                    <p>Dedicados ao resgate e proteção de animais em situação de rua.</p>
+                    <div class="redes-sociais">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="coluna-rodape">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone"></i> (19) 99835-5378</p>
+                    <p><i class="fas fa-envelope"></i> contato@happety.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Americana, SP</p>
+                </div>
+                <div class="coluna-rodape">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="voluntario.html">Seja Voluntário</a></li>
+                        <li><a href="lojas.html">Lojas Parceiras</a></li>
+                        <li><a href="#">Como Adotar</a></li>
+                        <li><a href="#">Emergência 24h</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="direitos-autorais">
+                <p>&copy; 2025 Happety. IBM - Etec Polivalente Americana - Extensão FATEC</p>
+            </div>
+        </div>
+    </footer>
+    <!-- JAVASCRIPT PARA FUNCIONALIDADES -->
+    <script>
+        // Menu mobile
+        const botaoMenuMobile = document.querySelector('.botao-menu-mobile');
+        const menuNavegacao = document.querySelector('.menu-navegacao');
+
+        botaoMenuMobile.addEventListener('click', () => {
+            menuNavegacao.classList.toggle('ativo');
+        // Funcionalidade dos botões de adotar
+        const botoesAdotar = document.querySelectorAll('.botao-adotar');
+        
+        botoesAdotar.forEach(botao => {
+            botao.addEventListener('click', (e) => {
+                const nomeAnimal = e.target.closest('.card-animal').querySelector('h3').textContent;
+                alert(`Obrigado pelo interesse em adotar ${nomeAnimal}! Em breve entraremos em contato via WhatsApp para dar continuidade ao processo de adoção.`);
+            });
+        });
+    </script>
+</body>
+</html>
+
+    

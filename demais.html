@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outros Animais para Adoção - Happety</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ESTILOS PARA SEÇÃO CUIDADOS ESPECIAIS */
+.secao-cuidados-especiais {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.container-cuidados {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-cuidados h2 {
+    font-size: 2.2rem;
+    color: #000; 
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.grid-cuidados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card-cuidado {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(155, 196, 204, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-cuidado:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(155, 196, 204, 0.3);
+}
+
+.card-cuidado i {
+    font-size: 3rem;
+    color: #B8D8E0;
+    margin-bottom: 1.5rem;
+}
+
+.card-cuidado h3 {
+    color: #000; 
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.card-cuidado p {
+    color: #000; 
+    line-height: 1.6;
+    font-size: 1rem;
+}
+     /* ESTILOS EMERGENCIAL PARA A LOJA VIRTUAL */
+        .secao-loja-virtual {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .container-loja {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .container-loja h2 {
+            font-size: 2.2rem;
+            color: #9BC4CC;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitulo-loja {
+            text-align: center;
+            color: #666666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .barra-pesquisa {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(155, 196, 204, 0.3);
+        }
+        
+        .barra-pesquisa input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .barra-pesquisa button {
+            padding: 1rem 1.5rem;
+            background-color: #B8D8E0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .barra-pesquisa button:hover {
+            background-color: #9BC4CC;
+        }
+        
+        .conteudo-loja {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+        
+        .filtros-loja {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(155, 196, 204, 0.2);
+            align-self: start;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .filtros-loja h3 {
+            color: #9BC4CC;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #D6EBF0;
+        }
+        
+        .grupo-filtro {
+            margin-bottom: 1.5rem;
+        }
+        
+        .grupo-filtro h4 {
+            color: #9BC4CC;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .opcoes-filtro {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .opcoes-filtro label {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #666666;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        
+        .opcoes-filtro input[type="checkbox"],
+        .opcoes-filtro input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #B8D8E0;
+        }
+        
+        .botao-aplicar, .botao-limpar {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 0.8rem;
+        }
+        
+        .botao-aplicar {
+            background-color: #B8D8E0;
+            color: white;
+        }
+        
+        .botao-aplicar:hover {
+            background-color: #9BC4CC;
+        }
+        
+        .botao-limpar {
+            background-color: transparent;
+            color: #9BC4CC;
+            border: 2px solid #B8D8E0;
+        }
+        
+        .produtos-loja {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .controles-produtos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(155, 196, 204, 0.2);
+        }
+        
+        .quantidade-produtos {
+            color: #666666;
+            font-size: 0.95rem;
+        }
+        
+        .ordenacao {
+            padding: 0.6rem 1rem;
+            border: 2px solid #B8D8E0;
+            border-radius: 8px;
+            background-color: white;
+            color: #666666;
+        }
+        
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card-produto {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(155, 196, 204, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .card-produto:hover {
+            transform: translateY(-5px);
+        }
+        
+        .imagem-produto {
+            height: 180px;
+            background: linear-gradient(135deg, #D6EBF0, #B8D8E0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .imagem-produto i {
+            font-size: 3.5rem;
+            color: white;
+        }
+        
+        .desconto {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .info-produto {
+            padding: 1.5rem;
+        }
+        
+        .info-produto h3 {
+            color: #9BC4CC;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .avaliacao {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .avaliacao i {
+            color: #ffc107;
+            font-size: 0.9rem;
+        }
+        
+        .avaliacao span {
+            color: #666666;
+            font-size: 0.85rem;
+        }
+        
+        .preco {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .preco-atual {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #9BC4CC;
+        }
+        
+        .preco-antigo {
+            font-size: 0.9rem;
+            color: #666666;
+            text-decoration: line-through;
+        }
+        
+        .botao-comprar {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #B8D8E0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .botao-comprar:hover {
+            background-color: #9BC4CC;
+        }
+        
+        .paginacao {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .paginacao button {
+            padding: 0.6rem 1rem;
+            border: 2px solid #B8D8E0;
+            background-color: white;
+            color: #9BC4CC;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .pagina-atual {
+            background-color: #B8D8E0;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .conteudo-loja {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-produtos {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        /* ESTILOS PARA SEÇÃO CUIDADOS ESPECIAIS */
+.secao-cuidados-especiais {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.container-cuidados {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-cuidados h2 {
+    font-size: 2.2rem;
+    color: #9BC4CC;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.grid-cuidados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card-cuidado {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(155, 196, 204, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-cuidado:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(155, 196, 204, 0.3);
+}
+
+.card-cuidado i {
+    font-size: 3rem;
+    color: #B8D8E0;
+    margin-bottom: 1.5rem;
+}
+
+.card-cuidado h3 {
+    color: #9BC4CC;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.card-cuidado p {
+    color: #666666;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+   </style>
+</head>
+<body>
+    <!-- CABEÇALHO COM NAVEGAÇÃO -->
+    <header class="cabecalho">
+        <nav class="barra-navegacao">
+            <div class="container-nav">
+                <div class="logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Happety</span>
+                </div>
+                <ul class="menu-navegacao">
+                    <li><a href="index.html">Geral</a></li>
+                    <li><a href="cachorros.html">Cachorros</a></li>
+                    <li><a href="gatos.html">Gatos</a></li>
+                    <li><a href="passaros.html">Pássaros</a></li>
+                    <li><a href="peixes.html">Peixes</a></li>
+                    <li><a href="demais.html" class="ativo">Demais</a></li>
+                    <li><a href="lojas.html">Serviços</a></li>
+                    <li><a href="voluntario.html" class="botao-voluntario">Voluntário</a></li>
+                    <li><a href="login.html" class="botao-voluntario">Usuário </a></li>
+                </ul>
+                <!-- BOTÃO MENU MOBILE -->
+                <div class="botao-menu-mobile">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SEÇÃO CABEÇALHO DA PÁGINA -->
+    <section class="secao-cabecalho-pagina">
+        <div class="container-cabecalho">
+            <div class="conteudo-cabecalho">
+                <i class="fas fa-paw icone-pagina"></i>
+                <h1>Outros Animais para Adoção</h1>
+                <p>Pequenos amigos especiais que também precisam de amor e cuidados. Coelhos, hamsters, porquinhos-da-índia e outros pets únicos.</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- SEÇÃO DE FILTROS -->
+    <section class="secao-filtros">
+        <div class="container-filtros">
+            <h3>Encontre seu Pequeno Amigo</h3>
+            <div class="filtros-animais">
+                <button class="filtro-ativo" data-filtro="todos">Todos</button>
+                <button data-filtro="coelhos">Coelhos</button>
+                <button data-filtro="roedores">Roedores</button>
+                <button data-filtro="repteis">Répteis</button>
+                <button data-filtro="exoticos">Exóticos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVA SEÇÃO: LOJA VIRTUAL PARA GATOS -->
+    <section class="secao-loja-virtual">
+        <div class="container-loja">
+            <h2>Produtos para Gatos</h2>
+            <p class="subtitulo-loja">Encontre tudo que seu felino precisa com preços especiais!</p>
+            
+            <div class="barra-pesquisa">
+                <input type="text" placeholder="O que seu gato precisa hoje?">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="conteudo-loja">
+                <aside class="filtros-loja">
+                    <h3>Filtros</h3>
+                    
+                    <div class="grupo-filtro">
+                        <h4>Categorias</h4>
+                        <div class="opcoes-filtro">
+                            <label><input type="checkbox" name="categoria" value="racao"> Hamsters </label>
+                            <label><input type="checkbox" name="categoria" value="areia"> Coelhos </label>
+                            <label><input type="checkbox" name="categoria" value="arranhador">  Serpentes </label>
+                            <label><input type="checkbox" name="categoria" value="medicamentos"> Medicamentos</label>
+                        </div>
+                    </div>
+                    
+                   
+                </aside>
+                
+                <div class="produtos-loja">
+                    <!-- Produtos específicos para gatos -->
+                    <div class="grid-produtos">
+                        <!-- Produto 1 -->
+                        <div class="card-produto">
+                            <div class="imagem-produto">
+                                <img src="aa.jpeg">
+
+                            </div>
+                            <div class="info-produto">
+                                <h3>Ração Premium para Gatos</h3>
+                                <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(124)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 899,90</span>
+
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        
+                    
+                            </div>
+                        </div>
+                        
+                        <!-- Produto 1 -->
+                        <div class="card-produto">
+                            <div class="imagem-produto">
+                                <img src="arrrrrrrrr.webp">
+                           
+                            </div>
+                            <div class="info-produto">
+                                <h3>Arranhador Toca P/ Gato Super Resistente + Rampa Anti Estres Facilita</h3>
+                                <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(124)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 80,90</span>
+                                
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        
+                    
+                            </div>
+                        </div>
+
+                        <!-- Produto 1 -->
+                        <div class="card-produto">
+                            <div class="imagem-produto">
+                                <img src="poste.webp">
+   
+                            </div>
+                            <div class="info-produto">
+                                <h3>Arranhador Para Gatos Poste Com Brinquedo</h3>
+                                <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(124)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 899,90</span>
+
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        
+                    
+                            </div>
+                        </div>
+
+                        <!-- Produto 1 -->
+                        <div class="card-produto">
+                            <div class="imagem-produto">
+                                <img src="bola.webp">
+
+                            </div>
+                            <div class="info-produto">
+                                <h3>Bola Interativa Pet, Bolinha Pet</h3>
+                                <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(124)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 899,90</span>
+
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        
+                    
+                            </div>
+                        </div>
+
+                        <!-- Produto 1 -->
+                        <div class="card-produto">
+                            <div class="imagem-produto">
+                                <img src="ggggg.webp">
+                                <span class="desconto">-12%</span>
+                            </div>
+                            <div class="info-produto">
+                                <h3>Brinquedo Gato Varinha Pássaro Com Ventosa</h3>
+                                <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(124)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 899,90</span>
+
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        
+                    
+                            </div>
+                        </div>
+
+                        <!-- Produto 1 -->
+                        <div class="card-produto">
+                            <div class="imagem-produto">
+                                <img src="2em1.webp">
+                                <span class="desconto">-12%</span>
+                            </div>
+                            <div class="info-produto">
+                                <h3>2 em 1 Casa e Arranhador para Gatos</h3>
+                                <div class="avaliacao">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(124)</span>
+                            </div>
+                            <div class="preco">
+                                <span class="preco-atual">R$ 899,90</span>
+
+                            </div>
+                            <button class="botao-comprar">Adicionar ao Carrinho</button>
+                        
+                    
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO PRINCIPAL DOS OUTROS ANIMAIS -->
+    <section class="secao-animais">
+        <div class="container-animais">
+            <div class="grid-animais">
+                <!-- CARD ANIMAL 1 -->
+                <div class="card-animal" data-categoria="coelhos">
+                    <div class="foto-animal">
+                        <img src="COelho.jpeg">
+                        <div class="tag-urgente">Urgente</div>
+                    </div>
+                    <div class="info-animal">
+                        <h3>Branquinho</h3>
+                        <div class="detalhes-animal">
+                            <span><i class="fas fa-paw"></i> Coelho</span>
+                            <span><i class="fas fa-palette"></i> Branco</span>
+                            <span><i class="fas fa-mars"></i> Macho</span>
+                        </div>
+                        <p>Coelho muito dócil e carinhoso. Foi abandonado e agora procura uma família que tenha espaço para ele correr e brincar. Adora cenouras!</p>
+                        <div class="saude-animal">
+                            <i class="fas fa-check-circle"></i> Saudável
+                            <i class="fas fa-check-circle"></i> Castrado
+                            <i class="fas fa-home"></i> Precisa de espaço
+                        </div>
+                        <button class="botao-adotar">Quero Adotar</button>
+                    </div>
+                </div>
+
+                <!-- CARD ANIMAL 2 -->
+                <div class="card-animal" data-categoria="roedores">
+                    <div class="foto-animal">
+                        <img src="images.jfif">
+                    </div>
+                    <div class="info-animal">
+                        <h3>Trio de Hamsters</h3>
+                        <div class="detalhes-animal">
+                            <span><i class="fas fa-paw"></i> Hamsters</span>
+                            <span><i class="fas fa-palette"></i> Dourados</span>
+                            <span><i class="fas fa-users"></i> Trio</span>
+                        </div>
+                        <p>Três hamsters sírios que precisam ser adotados juntos. São muito ativos durante a noite e adoram brincar na rodinha.</p>
+                        <div class="saude-animal">
+                            <i class="fas fa-check-circle"></i> Saudáveis
+                            <i class="fas fa-users"></i> Adoção em grupo
+                            <i class="fas fa-moon"></i> Noturnos
+                        </div>
+                        <button class="botao-adotar">Quero Adotar</button>
+                    </div>
+                </div>
+
+                <!-- CARD ANIMAL 3 -->
+                <div class="card-animal" data-categoria="coelhos">
+                    <div class="foto-animal">
+                        <img src="cccccccccc222.jfif">
+                    </div>
+                    <div class="info-animal">
+                        <h3>Lola</h3>
+                        <div class="detalhes-animal">
+                            <span><i class="fas fa-paw"></i> Coelha</span>
+                            <span><i class="fas fa-palette"></i> Cinza</span>
+                            <span><i class="fas fa-venus"></i> Fêmea</span>
+                        </div>
+                        <p>Coelhinha muito meiga e sociável. Gosta de brincar e receber carinho. Ideal para famílias com crianças responsáveis.</p>
+                        <div class="saude-animal">
+                            <i class="fas fa-check-circle"></i> Saudável
+                            <i class="fas fa-check-circle"></i> Castrada
+                            <i class="fas fa-child"></i> Boa com crianças
+                        </div>
+                        <button class="botao-adotar">Quero Adotar</button>
+                    </div>
+                </div>
+
+                
+        </div>
+    </section>
+
+    <!-- SEÇÃO CUIDADOS ESPECIAIS -->
+    <section class="secao-cuidados-especiais">
+        <div class="container-cuidados">
+            <h2>Cuidados com Pequenos Animais</h2>
+            <div class="grid-cuidados">
+                <div class="card-cuidado">
+                    <i class="fas fa-home"></i>
+                    <h3>Habitat Apropriado</h3>
+                    <p>Cada espécie precisa de um ambiente específico com tamanho, substrato e acessórios adequados.</p>
+                </div>
+                <div class="card-cuidado">
+                    <i class="fas fa-carrot"></i>
+                    <h3>Alimentação Específica</h3>
+                    <p>Dieta balanceada com ração própria para cada espécie, vegetais frescos e suplementos quando necessário.</p>
+                </div>
+                <div class="card-cuidado">
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Veterinário Especializado</h3>
+                    <p>Consultas regulares com veterinário que atenda animais exóticos e pequenos roedores.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <div class="container-rodape">
+            <div class="info-rodape">
+                <div class="coluna-rodape">
+                    <h3>Happety</h3>
+                    <p>Dedicados ao resgate e proteção de animais em situação de rua.</p>
+                    <div class="redes-sociais">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="coluna-rodape">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone"></i> (19) 99835-5378</p>
+                    <p><i class="fas fa-envelope"></i> contato@happety.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Americana, SP</p>
+                </div>
+                <div class="coluna-rodape">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="voluntario.html">Seja Voluntário</a></li>
+                        <li><a href="lojas.html">Lojas Parceiras</a></li>
+                        <li><a href="#">Como Adotar</a></li>
+                        <li><a href="#">Emergência 24h</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="direitos-autorais">
+                <p>&copy; 2025 Happety. IBM - Etec Polivalente Americana - Extensão FATEC</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT PARA FUNCIONALIDADES -->
+    <script>
+        // Menu mobile
+        const botaoMenuMobile = document.querySelector('.botao-menu-mobile');
+        const menuNavegacao = document.querySelector('.menu-navegacao');
+
+        botaoMenuMobile.addEventListener('click', () => {
+            menuNavegacao.classList.toggle('ativo');
+        });
+
+        // Funcionalidade dos filtros
+        const botoesFiltro = document.querySelectorAll('.filtros-animais button');
+        const cardsAnimais = document.querySelectorAll('.card-animal');
+
+        botoesFiltro.forEach(botao => {
+            botao.addEventListener('click', () => {
+                botoesFiltro.forEach(btn => btn.classList.remove('filtro-ativo'));
+                botao.classList.add('filtro-ativo');
+                
+                const filtro = botao.getAttribute('data-filtro');
+                
+                cardsAnimais.forEach(card => {
+                    if (filtro === 'todos') {
+                        card.style.display = 'block';
+                    } else {
+                        const categorias = card.getAttribute('data-categoria');
+                        if (categorias.includes(filtro)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // Funcionalidade dos botões de adotar
+        const botoesAdotar = document.querySelectorAll('.botao-adotar');
+        
+        botoesAdotar.forEach(botao => {
+            botao.addEventListener('click', (e) => {
+                const nomeAnimal = e.target.closest('.card-animal').querySelector('h3').textContent;
+                alert(`Obrigado pelo interesse em adotar ${nomeAnimal}! Em breve entraremos em contato via WhatsApp para dar continuidade ao processo de adoção.`);
+            });
+        });
+    </script>
+</body>
+</html>
