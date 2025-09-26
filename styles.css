@@ -357,6 +357,10 @@ body {
     margin-bottom: 3rem;
 }
 
+.secao-ajudar { /* ADICIOPNANDO DEGRADÊS */
+
+}
+
 .formas-ajuda {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1077,5 +1081,4 @@ body {
 }
 
 .container-como-usar h2 {
-    font-size: 2.5rem;
-    color: #
+    font-size: 2.5rem; }
