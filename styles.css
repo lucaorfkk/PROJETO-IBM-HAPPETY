@@ -358,7 +358,33 @@ body {
 }
 
 .secao-ajudar { /* ADICIOPNANDO DEGRADÊS */
+    background: #F8F9FA;
+background: linear-gradient(180deg, rgba(248, 249, 250, 1) 0%, rgb(209, 238, 245) 18%);
+}
 
+.secao-categorias {
+background: #B8D8E0;
+background: linear-gradient(180deg, rgba(184, 216, 224, 1) 0%, rgba(248, 249, 250, 1) 18%);
+}
+
+.secao-info-adocao {
+    background: #cae3e9;
+background: linear-gradient(360deg, rgba(184, 216, 224, 1) 0%, rgb(186, 224, 231) 90%);
+}
+
+.secao-sobre {
+    background: #D6EBF0;
+background: linear-gradient(180deg, rgba(214, 235, 240, 1) 0%, rgb(186, 224, 231) 80%);
+}
+
+.secao-estatisticas {
+   background: #F8F9FA;
+background: linear-gradient(180deg, rgba(248, 249, 250, 1) 0%, rgba(214, 235, 240, 1) 50%);
+}
+
+.secao-destaque {
+    background: #F8F9FA;
+background: linear-gradient(360deg, rgba(248, 249, 250, 1) 0%, rgba(214, 235, 240, 1) 50%);
 }
 
 .formas-ajuda {
